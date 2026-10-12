@@ -9,6 +9,8 @@ workflow moves that section under the version it ships.
 
 ## [Unreleased]
 
+## [0.1.1] - 2026-10-12
+
 ### Added
 
 - Notion Calendar integration (Gladys 5.2.0 or later, calendar provider): each
@@ -31,4 +33,5 @@ workflow moves that section under the version it ships.
   multi-arch image build and UI-driven release workflows.
 - `SECURITY.md` and `CLAUDE.md`.
 
-[Unreleased]: https://github.com/quentinlegay/gladys-notion-calendar/commits/main
+[Unreleased]: https://github.com/quentinlegay/gladys-notion-calendar/compare/v0.1.1...HEAD
+[0.1.1]: https://github.com/quentinlegay/gladys-notion-calendar/releases/tag/v0.1.1

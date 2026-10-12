@@ -6,17 +6,24 @@
     "en": "Sync the Notion databases shown in Notion Calendar into the Gladys calendars.",
     "fr": "Synchronise les bases Notion affichées dans Notion Calendar avec les calendriers Gladys."
   },
-  "version": "0.1.0",
-  "docker_image": "ghcr.io/quentinlegay/gladys-notion-calendar:0.1.0",
+  "version": "0.1.1",
+  "docker_image": "ghcr.io/quentinlegay/gladys-notion-calendar:0.1.1",
   "gladys_version": ">=5.2.0",
   "cover_image": "https://raw.githubusercontent.com/quentinlegay/gladys-notion-calendar/main/cover.png",
-  "categories": ["services"],
-  "transports": ["cloud"],
+  "categories": [
+    "services"
+  ],
+  "transports": [
+    "cloud"
+  ],
   "config_schema": [
     {
       "key": "intro",
       "type": "section",
-      "label": { "en": "How it works", "fr": "Fonctionnement" },
+      "label": {
+        "en": "How it works",
+        "fr": "Fonctionnement"
+      },
       "description": {
         "en": "Each user enables the integration in \"My calendars\" below with their own Notion token. Every Notion database with a date property becomes a Gladys calendar, refreshed at the interval set here. Calendars start private: share them to show them on the dashboards and in the scenes.",
         "fr": "Chaque utilisateur active l'intégration dans « Mes calendriers » ci-dessous avec son propre jeton Notion. Chaque base Notion ayant une propriété date devient un calendrier Gladys, rafraîchi à l'intervalle choisi ici. Les calendriers sont privés au départ : partagez-les pour les voir sur les tableaux de bord et dans les scènes."
@@ -25,7 +32,10 @@
     {
       "key": "sync_interval",
       "type": "number",
-      "label": { "en": "Sync interval (minutes)", "fr": "Intervalle de synchronisation (minutes)" },
+      "label": {
+        "en": "Sync interval (minutes)",
+        "fr": "Intervalle de synchronisation (minutes)"
+      },
       "description": {
         "en": "How often Notion is read, for every user (5 minutes minimum).",
         "fr": "Fréquence de lecture de Notion, pour chaque utilisateur (5 minutes minimum)."
@@ -38,7 +48,10 @@
     {
       "key": "past_days",
       "type": "number",
-      "label": { "en": "Days kept in the past", "fr": "Jours conservés dans le passé" },
+      "label": {
+        "en": "Days kept in the past",
+        "fr": "Jours conservés dans le passé"
+      },
       "description": {
         "en": "Older events are removed from Gladys.",
         "fr": "Les événements plus anciens sont retirés de Gladys."
@@ -51,7 +64,10 @@
     {
       "key": "future_days",
       "type": "number",
-      "label": { "en": "Days synced ahead", "fr": "Jours synchronisés à l'avance" },
+      "label": {
+        "en": "Days synced ahead",
+        "fr": "Jours synchronisés à l'avance"
+      },
       "description": {
         "en": "Horizon of the calendar view, the reminders and the widgets.",
         "fr": "Horizon de la vue calendrier, des rappels et des widgets."
@@ -66,7 +82,10 @@
     {
       "key": "account_intro",
       "type": "section",
-      "label": { "en": "Connect your Notion workspace", "fr": "Connectez votre espace Notion" },
+      "label": {
+        "en": "Connect your Notion workspace",
+        "fr": "Connectez votre espace Notion"
+      },
       "description": {
         "en": "1. Create an internal integration in Notion and copy its secret. 2. On each database to sync, open ••• → Connections and add that integration. Notion Calendar shows the same databases: those with a date property.",
         "fr": "1. Créez une intégration interne dans Notion et copiez son secret. 2. Sur chaque base à synchroniser, ouvrez ••• → Connexions et ajoutez cette intégration. Notion Calendar affiche les mêmes bases : celles qui ont une propriété date."
@@ -74,25 +93,40 @@
       "links": [
         {
           "url": "https://www.notion.so/profile/integrations",
-          "label": { "en": "My Notion integrations", "fr": "Mes intégrations Notion" }
+          "label": {
+            "en": "My Notion integrations",
+            "fr": "Mes intégrations Notion"
+          }
         },
         {
           "url": "https://developers.notion.com/docs/create-a-notion-integration",
-          "label": { "en": "Notion guide", "fr": "Guide Notion" }
+          "label": {
+            "en": "Notion guide",
+            "fr": "Guide Notion"
+          }
         }
       ]
     },
     {
       "key": "notion_token",
       "type": "secret",
-      "label": { "en": "Notion integration secret", "fr": "Secret de l'intégration Notion" },
-      "placeholder": { "en": "ntn_…", "fr": "ntn_…" },
+      "label": {
+        "en": "Notion integration secret",
+        "fr": "Secret de l'intégration Notion"
+      },
+      "placeholder": {
+        "en": "ntn_…",
+        "fr": "ntn_…"
+      },
       "required": true
     },
     {
       "key": "databases",
       "type": "string",
-      "label": { "en": "Databases (optional)", "fr": "Bases (facultatif)" },
+      "label": {
+        "en": "Databases (optional)",
+        "fr": "Bases (facultatif)"
+      },
       "description": {
         "en": "Links or ids of the databases to sync, separated by commas. Empty: every database shared with the integration.",
         "fr": "Liens ou identifiants des bases à synchroniser, séparés par des virgules. Vide : toutes les bases partagées avec l'intégration."
@@ -106,31 +140,46 @@
     {
       "key": "date_property",
       "type": "string",
-      "label": { "en": "Date property (optional)", "fr": "Propriété date (facultatif)" },
+      "label": {
+        "en": "Date property (optional)",
+        "fr": "Propriété date (facultatif)"
+      },
       "description": {
         "en": "Name of the date property to use when a database has several. Empty: the first one.",
         "fr": "Nom de la propriété date à utiliser quand une base en a plusieurs. Vide : la première."
       },
-      "placeholder": { "en": "e.g. Date", "fr": "ex. Date" },
+      "placeholder": {
+        "en": "e.g. Date",
+        "fr": "ex. Date"
+      },
       "required": false
     }
   ],
   "actions": [
     {
       "key": "test_connection",
-      "label": { "en": "Test the Notion accounts", "fr": "Tester les comptes Notion" },
+      "label": {
+        "en": "Test the Notion accounts",
+        "fr": "Tester les comptes Notion"
+      },
       "timeout_seconds": 60
     },
     {
       "key": "sync_now",
-      "label": { "en": "Sync now", "fr": "Synchroniser maintenant" },
+      "label": {
+        "en": "Sync now",
+        "fr": "Synchroniser maintenant"
+      },
       "timeout_seconds": 120
     }
   ],
   "scene_triggers": [
     {
       "key": "event_created",
-      "label": { "en": "Notion event added", "fr": "Événement Notion ajouté" },
+      "label": {
+        "en": "Notion event added",
+        "fr": "Événement Notion ajouté"
+      },
       "description": {
         "en": "A dated page appeared in a shared Notion calendar.",
         "fr": "Une page datée est apparue dans un calendrier Notion partagé."
@@ -139,7 +188,10 @@
         {
           "key": "calendar",
           "type": "string",
-          "label": { "en": "Calendar name", "fr": "Nom du calendrier" },
+          "label": {
+            "en": "Calendar name",
+            "fr": "Nom du calendrier"
+          },
           "description": {
             "en": "Name of the Notion database. Empty: any shared calendar.",
             "fr": "Nom de la base Notion. Vide : n'importe quel calendrier partagé."
@@ -147,44 +199,123 @@
         }
       ],
       "variables": [
-        { "key": "calendar", "type": "string", "label": { "en": "Calendar", "fr": "Calendrier" } },
-        { "key": "name", "type": "string", "label": { "en": "Event name", "fr": "Nom de l'événement" } },
-        { "key": "start", "type": "string", "label": { "en": "Start", "fr": "Début" } },
-        { "key": "all_day", "type": "boolean", "label": { "en": "All day", "fr": "Toute la journée" } },
-        { "key": "url", "type": "string", "label": { "en": "Notion link", "fr": "Lien Notion" } }
+        {
+          "key": "calendar",
+          "type": "string",
+          "label": {
+            "en": "Calendar",
+            "fr": "Calendrier"
+          }
+        },
+        {
+          "key": "name",
+          "type": "string",
+          "label": {
+            "en": "Event name",
+            "fr": "Nom de l'événement"
+          }
+        },
+        {
+          "key": "start",
+          "type": "string",
+          "label": {
+            "en": "Start",
+            "fr": "Début"
+          }
+        },
+        {
+          "key": "all_day",
+          "type": "boolean",
+          "label": {
+            "en": "All day",
+            "fr": "Toute la journée"
+          }
+        },
+        {
+          "key": "url",
+          "type": "string",
+          "label": {
+            "en": "Notion link",
+            "fr": "Lien Notion"
+          }
+        }
       ]
     },
     {
       "key": "sync_failed",
-      "label": { "en": "Notion sync failed", "fr": "Échec de synchro Notion" },
+      "label": {
+        "en": "Notion sync failed",
+        "fr": "Échec de synchro Notion"
+      },
       "description": {
         "en": "An account stopped syncing (revoked token, unshared database).",
         "fr": "Un compte ne se synchronise plus (jeton révoqué, base non partagée)."
       },
       "variables": [
-        { "key": "user", "type": "string", "label": { "en": "User", "fr": "Utilisateur" } },
-        { "key": "error", "type": "string", "label": { "en": "Error", "fr": "Erreur" } }
+        {
+          "key": "user",
+          "type": "string",
+          "label": {
+            "en": "User",
+            "fr": "Utilisateur"
+          }
+        },
+        {
+          "key": "error",
+          "type": "string",
+          "label": {
+            "en": "Error",
+            "fr": "Erreur"
+          }
+        }
       ]
     }
   ],
   "scene_actions": [
     {
       "key": "sync_now",
-      "label": { "en": "Sync Notion calendars", "fr": "Synchroniser les calendriers Notion" },
+      "label": {
+        "en": "Sync Notion calendars",
+        "fr": "Synchroniser les calendriers Notion"
+      },
       "description": {
         "en": "Read Notion now instead of waiting for the next sync.",
         "fr": "Lit Notion maintenant au lieu d'attendre la prochaine synchro."
       },
       "timeout_seconds": 120,
       "outputs": [
-        { "key": "calendars", "type": "number", "label": { "en": "Calendars", "fr": "Calendriers" } },
-        { "key": "events", "type": "number", "label": { "en": "Events", "fr": "Événements" } },
-        { "key": "success", "type": "boolean", "label": { "en": "Every account synced", "fr": "Tous les comptes synchronisés" } }
+        {
+          "key": "calendars",
+          "type": "number",
+          "label": {
+            "en": "Calendars",
+            "fr": "Calendriers"
+          }
+        },
+        {
+          "key": "events",
+          "type": "number",
+          "label": {
+            "en": "Events",
+            "fr": "Événements"
+          }
+        },
+        {
+          "key": "success",
+          "type": "boolean",
+          "label": {
+            "en": "Every account synced",
+            "fr": "Tous les comptes synchronisés"
+          }
+        }
       ]
     },
     {
       "key": "create_event",
-      "label": { "en": "Add a Notion event", "fr": "Ajouter un événement Notion" },
+      "label": {
+        "en": "Add a Notion event",
+        "fr": "Ajouter un événement Notion"
+      },
       "description": {
         "en": "Create a page in the database of a shared Notion calendar.",
         "fr": "Crée une page dans la base d'un calendrier Notion partagé."
@@ -194,46 +325,84 @@
         {
           "key": "calendar",
           "type": "string",
-          "label": { "en": "Calendar name", "fr": "Nom du calendrier" },
+          "label": {
+            "en": "Calendar name",
+            "fr": "Nom du calendrier"
+          },
           "required": true
         },
         {
           "key": "name",
           "type": "string",
-          "label": { "en": "Event name", "fr": "Nom de l'événement" },
+          "label": {
+            "en": "Event name",
+            "fr": "Nom de l'événement"
+          },
           "required": true
         },
         {
           "key": "start",
           "type": "string",
-          "label": { "en": "Start", "fr": "Début" },
+          "label": {
+            "en": "Start",
+            "fr": "Début"
+          },
           "description": {
             "en": "A date (2026-10-12) for an all-day event, or a date-time (2026-10-12T09:00:00+02:00).",
             "fr": "Une date (2026-10-12) pour un événement sur la journée, ou une date-heure (2026-10-12T09:00:00+02:00)."
           },
-          "placeholder": { "en": "2026-10-12T09:00:00+02:00", "fr": "2026-10-12T09:00:00+02:00" },
+          "placeholder": {
+            "en": "2026-10-12T09:00:00+02:00",
+            "fr": "2026-10-12T09:00:00+02:00"
+          },
           "required": true
         },
         {
           "key": "end",
           "type": "string",
-          "label": { "en": "End", "fr": "Fin" },
-          "placeholder": { "en": "2026-10-12T10:00:00+02:00", "fr": "2026-10-12T10:00:00+02:00" }
+          "label": {
+            "en": "End",
+            "fr": "Fin"
+          },
+          "placeholder": {
+            "en": "2026-10-12T10:00:00+02:00",
+            "fr": "2026-10-12T10:00:00+02:00"
+          }
         },
         {
           "key": "location",
           "type": "string",
-          "label": { "en": "Location", "fr": "Lieu" }
+          "label": {
+            "en": "Location",
+            "fr": "Lieu"
+          }
         }
       ],
       "outputs": [
-        { "key": "created", "type": "boolean", "label": { "en": "Event created", "fr": "Événement créé" } },
-        { "key": "url", "type": "string", "label": { "en": "Notion link", "fr": "Lien Notion" } }
+        {
+          "key": "created",
+          "type": "boolean",
+          "label": {
+            "en": "Event created",
+            "fr": "Événement créé"
+          }
+        },
+        {
+          "key": "url",
+          "type": "string",
+          "label": {
+            "en": "Notion link",
+            "fr": "Lien Notion"
+          }
+        }
       ]
     },
     {
       "key": "get_next_event",
-      "label": { "en": "Get the next Notion event", "fr": "Lire le prochain événement Notion" },
+      "label": {
+        "en": "Get the next Notion event",
+        "fr": "Lire le prochain événement Notion"
+      },
       "description": {
         "en": "The next event of the shared Notion calendars, for the following actions.",
         "fr": "Le prochain événement des calendriers Notion partagés, pour les actions suivantes."
@@ -243,7 +412,10 @@
         {
           "key": "calendar",
           "type": "string",
-          "label": { "en": "Calendar name", "fr": "Nom du calendrier" },
+          "label": {
+            "en": "Calendar name",
+            "fr": "Nom du calendrier"
+          },
           "description": {
             "en": "Empty: every shared calendar.",
             "fr": "Vide : tous les calendriers partagés."
@@ -251,19 +423,64 @@
         }
       ],
       "outputs": [
-        { "key": "found", "type": "boolean", "label": { "en": "Event found", "fr": "Événement trouvé" } },
-        { "key": "name", "type": "string", "label": { "en": "Event name", "fr": "Nom de l'événement" } },
-        { "key": "start", "type": "string", "label": { "en": "Start", "fr": "Début" } },
-        { "key": "minutes_until", "type": "number", "label": { "en": "Minutes until start", "fr": "Minutes avant le début" } },
-        { "key": "calendar", "type": "string", "label": { "en": "Calendar", "fr": "Calendrier" } },
-        { "key": "url", "type": "string", "label": { "en": "Notion link", "fr": "Lien Notion" } }
+        {
+          "key": "found",
+          "type": "boolean",
+          "label": {
+            "en": "Event found",
+            "fr": "Événement trouvé"
+          }
+        },
+        {
+          "key": "name",
+          "type": "string",
+          "label": {
+            "en": "Event name",
+            "fr": "Nom de l'événement"
+          }
+        },
+        {
+          "key": "start",
+          "type": "string",
+          "label": {
+            "en": "Start",
+            "fr": "Début"
+          }
+        },
+        {
+          "key": "minutes_until",
+          "type": "number",
+          "label": {
+            "en": "Minutes until start",
+            "fr": "Minutes avant le début"
+          }
+        },
+        {
+          "key": "calendar",
+          "type": "string",
+          "label": {
+            "en": "Calendar",
+            "fr": "Calendrier"
+          }
+        },
+        {
+          "key": "url",
+          "type": "string",
+          "label": {
+            "en": "Notion link",
+            "fr": "Lien Notion"
+          }
+        }
       ]
     }
   ],
   "widgets": [
     {
       "key": "upcoming_events",
-      "label": { "en": "Notion agenda", "fr": "Agenda Notion" },
+      "label": {
+        "en": "Notion agenda",
+        "fr": "Agenda Notion"
+      },
       "description": {
         "en": "The next events of the shared Notion calendars.",
         "fr": "Les prochains événements des calendriers Notion partagés."
@@ -273,7 +490,10 @@
         {
           "key": "calendar",
           "type": "string",
-          "label": { "en": "Calendar name", "fr": "Nom du calendrier" },
+          "label": {
+            "en": "Calendar name",
+            "fr": "Nom du calendrier"
+          },
           "description": {
             "en": "Empty: every shared calendar.",
             "fr": "Vide : tous les calendriers partagés."
@@ -282,7 +502,10 @@
         {
           "key": "max_events",
           "type": "number",
-          "label": { "en": "Events shown", "fr": "Événements affichés" },
+          "label": {
+            "en": "Events shown",
+            "fr": "Événements affichés"
+          },
           "default": 5,
           "min": 1,
           "max": 8
@@ -292,7 +515,10 @@
     },
     {
       "key": "agenda_summary",
-      "label": { "en": "Notion summary", "fr": "Résumé Notion" },
+      "label": {
+        "en": "Notion summary",
+        "fr": "Résumé Notion"
+      },
       "description": {
         "en": "Upcoming event counts, next event and sync health.",
         "fr": "Nombre d'événements à venir, prochain événement et état de la synchro."
