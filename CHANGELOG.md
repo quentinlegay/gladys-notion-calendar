@@ -9,6 +9,8 @@ workflow moves that section under the version it ships.
 
 ## [Unreleased]
 
+## [0.1.2] - 2026-10-12
+
 ## [0.1.1] - 2026-10-12
 
 ### Added
@@ -33,5 +35,6 @@ workflow moves that section under the version it ships.
   multi-arch image build and UI-driven release workflows.
 - `SECURITY.md` and `CLAUDE.md`.
 
-[Unreleased]: https://github.com/quentinlegay/gladys-notion-calendar/compare/v0.1.1...HEAD
+[Unreleased]: https://github.com/quentinlegay/gladys-notion-calendar/compare/v0.1.2...HEAD
+[0.1.2]: https://github.com/quentinlegay/gladys-notion-calendar/compare/v0.1.1...v0.1.2
 [0.1.1]: https://github.com/quentinlegay/gladys-notion-calendar/releases/tag/v0.1.1
