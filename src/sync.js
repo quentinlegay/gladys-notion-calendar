@@ -82,17 +82,31 @@ export function describeError(err) {
       return {
         en: 'Notion refused the token: create a new one and update your account.',
         fr: 'Notion a refusé le jeton : créez-en un nouveau et mettez à jour votre compte.',
+        de: 'Notion hat das Token abgelehnt: Erstellen Sie ein neues und aktualisieren Sie Ihr Konto.',
+        es: 'Notion ha rechazado el token: crea uno nuevo y actualiza tu cuenta.',
       };
     }
     if (err.status === 404 || err.status === 403) {
       return {
         en: 'A database is not shared with the Notion integration (Connections menu of the database).',
         fr: "Une base n'est pas partagée avec l'intégration Notion (menu Connexions de la base).",
+        de: 'Eine Datenbank ist nicht mit der Notion-Integration geteilt (Menü Verbindungen der Datenbank).',
+        es: 'Una base de datos no está compartida con la integración de Notion (menú Conexiones de la base).',
       };
     }
-    return { en: `Notion error: ${err.message}`, fr: `Erreur Notion : ${err.message}` };
+    return {
+      en: `Notion error: ${err.message}`,
+      fr: `Erreur Notion : ${err.message}`,
+      de: `Notion-Fehler: ${err.message}`,
+      es: `Error de Notion: ${err.message}`,
+    };
   }
-  return { en: `Sync error: ${err.message}`, fr: `Erreur de synchronisation : ${err.message}` };
+  return {
+    en: `Sync error: ${err.message}`,
+    fr: `Erreur de synchronisation : ${err.message}`,
+    de: `Synchronisierungsfehler: ${err.message}`,
+    es: `Error de sincronización: ${err.message}`,
+  };
 }
 
 export class CalendarSync {
@@ -413,6 +427,8 @@ export class CalendarSync {
         await this.gladys.setConnectionStatus(false, {
           en: `${failed.length} of ${this.users.size} accounts cannot sync, check the integration logs.`,
           fr: `${failed.length} comptes sur ${this.users.size} ne se synchronisent pas, consultez les logs.`,
+          de: `${failed.length} von ${this.users.size} Konten können nicht synchronisieren, prüfen Sie die Logs.`,
+          es: `${failed.length} de ${this.users.size} cuentas no se sincronizan, consulta los registros.`,
         });
       }
     } catch (err) {

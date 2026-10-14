@@ -9,6 +9,13 @@ workflow moves that section under the version it ships.
 
 ## [Unreleased]
 
+### Added
+
+- German and Spanish translations: manifest texts, action and status messages,
+  widget contents, and the user documentation (`docs/de.md`, `docs/es.md`).
+- The German and Spanish location property names (`Ort`, `Standort`, `Lugar`,
+  `Ubicación`, `Dirección`) fill the event location, like `Location` and `Lieu`.
+
 ## [1.0.0] - 2026-10-12
 
 ## [0.1.2] - 2026-10-12

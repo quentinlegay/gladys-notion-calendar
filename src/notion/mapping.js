@@ -31,6 +31,11 @@ const LOCATION_PROPERTY_NAMES = new Set([
   'adresse',
   'where',
   'où',
+  'ort',
+  'standort',
+  'lugar',
+  'ubicación',
+  'dirección',
 ]);
 
 /**

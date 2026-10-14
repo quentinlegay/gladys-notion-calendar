@@ -142,6 +142,9 @@ test('every text is bilingual (English and French)', () => {
   visit(manifest);
   for (const text of texts) {
     assert.equal(typeof text, 'object', `plain string: ${JSON.stringify(text)}`);
-    assert.ok(text.en && text.fr, `missing a language: ${JSON.stringify(text)}`);
+    assert.ok(
+      text.en && text.fr && text.de && text.es,
+      `missing a language: ${JSON.stringify(text)}`,
+    );
   }
 });

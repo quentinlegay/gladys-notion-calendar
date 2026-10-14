@@ -37,6 +37,28 @@ test('every widget content is rendered exactly as sent', async () => {
   }
 });
 
+test('every widget text is translated in en, fr, de and es', async () => {
+  const check = (node) => {
+    if (Array.isArray(node)) {
+      node.forEach(check);
+    } else if (node && typeof node === 'object') {
+      if (typeof node.en === 'string') {
+        for (const lang of ['fr', 'de', 'es']) {
+          assert.ok(node[lang], `missing "${lang}": ${JSON.stringify(node)}`);
+        }
+      }
+      Object.values(node).forEach(check);
+    }
+  };
+  for (const share of [true, false]) {
+    const { gladys } = await connected({ share });
+    for (const key of Object.keys(WIDGETS)) {
+      check(await content(gladys, key));
+    }
+    current.sync.stop();
+  }
+});
+
 test('the empty states are valid too, and leak no private calendar', async () => {
   const { gladys } = await connected({ share: false });
   for (const key of Object.keys(WIDGETS)) {
@@ -74,7 +96,7 @@ test('the summary counts the upcoming events', async () => {
   const tiles = data.components.filter((component) => component.type === 'value');
   assert.deepEqual(
     tiles.map((tile) => tile.value),
-    [1, 2, { en: '3 d', fr: '3 j' }],
+    [1, 2, { en: '3 d', fr: '3 j', de: '3 T.', es: '3 d' }],
   );
 });
 
@@ -104,5 +126,10 @@ test('every sync nudges the widgets', async () => {
 test('formatDelay fits a tile', () => {
   assert.equal(formatDelay(35 * 60000), '35 min');
   assert.equal(formatDelay(125 * 60000), '2 h 05');
-  assert.deepEqual(formatDelay(3 * 24 * 60 * 60000), { en: '3 d', fr: '3 j' });
+  assert.deepEqual(formatDelay(3 * 24 * 60 * 60000), {
+    en: '3 d',
+    fr: '3 j',
+    de: '3 T.',
+    es: '3 d',
+  });
 });

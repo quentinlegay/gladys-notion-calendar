@@ -25,9 +25,11 @@ export const ACTIONS = {
       return {
         en: 'No user enabled the integration yet: open "My calendars" on this page.',
         fr: "Aucun utilisateur n'a encore activé l'intégration : ouvrez « Mes calendriers » sur cette page.",
+        de: 'Noch kein Nutzer hat die Integration aktiviert: Öffnen Sie „Meine Kalender“ auf dieser Seite.',
+        es: 'Ningún usuario ha activado todavía la integración: abre «Mis calendarios» en esta página.',
       };
     }
-    const lines = { en: [], fr: [] };
+    const lines = { en: [], fr: [], de: [], es: [] };
     for (const { user, config } of accounts) {
       const who = user.first_name || user.selector;
       const account = normalizeAccount(config);
@@ -38,13 +40,19 @@ export const ACTIONS = {
         const plans = await sync.resolveDataSources(sync.createClient(account.token), account);
         lines.en.push(`${who}: ${plans.length} database(s) with a date`);
         lines.fr.push(`${who} : ${plans.length} base(s) avec une date`);
+        lines.de.push(`${who}: ${plans.length} Datenbank(en) mit Datum`);
+        lines.es.push(`${who}: ${plans.length} base(s) de datos con fecha`);
       } catch (err) {
         const message = describeError(err);
         lines.en.push(`${who}: ${message.en}`);
         lines.fr.push(`${who} : ${message.fr}`);
+        lines.de.push(`${who}: ${message.de}`);
+        lines.es.push(`${who}: ${message.es}`);
       }
     }
-    return { en: lines.en.join(' — '), fr: lines.fr.join(' — ') };
+    return Object.fromEntries(
+      Object.entries(lines).map(([lang, list]) => [lang, list.join(' — ')]),
+    );
   },
 
   async sync_now(_gladys, { sync }) {
@@ -55,6 +63,8 @@ export const ACTIONS = {
     return {
       en: `${calendars} calendars and ${events} events synced`,
       fr: `${calendars} calendriers et ${events} événements synchronisés`,
+      de: `${calendars} Kalender und ${events} Termine synchronisiert`,
+      es: `${calendars} calendarios y ${events} eventos sincronizados`,
     };
   },
 };
@@ -115,6 +125,8 @@ export function registerHandlers(gladys, options = {}) {
         .setConnectionStatus(false, {
           en: 'Initialization failed, check the integration logs.',
           fr: "L'initialisation a échoué, consultez les logs de l'intégration.",
+          de: 'Die Initialisierung ist fehlgeschlagen, prüfen Sie die Logs der Integration.',
+          es: 'La inicialización ha fallado, consulta los registros de la integración.',
         })
         .catch(() => {});
     }
