@@ -19,7 +19,7 @@ Notion API, then:
 - each database (data source) with a date property becomes a Gladys
   **calendar**, named after the database;
 - each dated page becomes an **event**: its title, its date (all day or
-  timed), its Notion link and, when the database has a `Location` / `Lieu`
+  timed), its Notion link and, when the database has a `Location` / `Lieu` / `Ort` / `Lugar`
   text property, its location.
 
 The sync goes from Notion to Gladys, every 15 minutes by default. A page

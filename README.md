@@ -8,7 +8,8 @@ calendars — built on the official
 and the SDK
 [`@gladysassistant/integration-sdk`](https://github.com/GladysAssistant/integration-sdk-js).
 
-User documentation: [English](docs/en.md) · [Français](docs/fr.md).
+User documentation: [English](docs/en.md) · [Français](docs/fr.md) ·
+[Deutsch](docs/de.md) · [Español](docs/es.md).
 
 ## Features
 

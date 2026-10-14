@@ -4,7 +4,9 @@
   "name": "Notion Calendar",
   "description": {
     "en": "Sync the Notion databases shown in Notion Calendar into the Gladys calendars.",
-    "fr": "Synchronise les bases Notion affichées dans Notion Calendar avec les calendriers Gladys."
+    "fr": "Synchronise les bases Notion affichées dans Notion Calendar avec les calendriers Gladys.",
+    "de": "Synchronisiert die in Notion Calendar angezeigten Notion-Datenbanken mit den Gladys-Kalendern.",
+    "es": "Sincroniza las bases de datos de Notion de Notion Calendar con los calendarios de Gladys."
   },
   "version": "1.0.0",
   "docker_image": "ghcr.io/quentinlegay/gladys-notion-calendar:1.0.0",
@@ -22,11 +24,15 @@
       "type": "section",
       "label": {
         "en": "How it works",
-        "fr": "Fonctionnement"
+        "fr": "Fonctionnement",
+        "de": "Funktionsweise",
+        "es": "Funcionamiento"
       },
       "description": {
         "en": "Each user enables the integration in \"My calendars\" below with their own Notion token. Every Notion database with a date property becomes a Gladys calendar, refreshed at the interval set here. Calendars start private: share them to show them on the dashboards and in the scenes.",
-        "fr": "Chaque utilisateur active l'intégration dans « Mes calendriers » ci-dessous avec son propre jeton Notion. Chaque base Notion ayant une propriété date devient un calendrier Gladys, rafraîchi à l'intervalle choisi ici. Les calendriers sont privés au départ : partagez-les pour les voir sur les tableaux de bord et dans les scènes."
+        "fr": "Chaque utilisateur active l'intégration dans « Mes calendriers » ci-dessous avec son propre jeton Notion. Chaque base Notion ayant une propriété date devient un calendrier Gladys, rafraîchi à l'intervalle choisi ici. Les calendriers sont privés au départ : partagez-les pour les voir sur les tableaux de bord et dans les scènes.",
+        "de": "Jeder Nutzer aktiviert die Integration unten unter „Meine Kalender“ mit seinem eigenen Notion-Token. Jede Notion-Datenbank mit einer Datumseigenschaft wird zu einem Gladys-Kalender, der im hier gewählten Intervall aktualisiert wird. Kalender sind zunächst privat: Teilen Sie sie, um sie auf den Dashboards und in den Szenen zu sehen.",
+        "es": "Cada usuario activa la integración en «Mis calendarios» más abajo con su propio token de Notion. Cada base de datos de Notion con una propiedad de fecha se convierte en un calendario de Gladys, actualizado con el intervalo elegido aquí. Los calendarios empiezan siendo privados: compártelos para verlos en los paneles y en las escenas."
       }
     },
     {
@@ -34,11 +40,15 @@
       "type": "number",
       "label": {
         "en": "Sync interval (minutes)",
-        "fr": "Intervalle de synchronisation (minutes)"
+        "fr": "Intervalle de synchronisation (minutes)",
+        "de": "Synchronisierungsintervall (Minuten)",
+        "es": "Intervalo de sincronización (minutos)"
       },
       "description": {
         "en": "How often Notion is read, for every user (5 minutes minimum).",
-        "fr": "Fréquence de lecture de Notion, pour chaque utilisateur (5 minutes minimum)."
+        "fr": "Fréquence de lecture de Notion, pour chaque utilisateur (5 minutes minimum).",
+        "de": "Wie oft Notion gelesen wird, für jeden Nutzer (mindestens 5 Minuten).",
+        "es": "Frecuencia de lectura de Notion, para cada usuario (5 minutos como mínimo)."
       },
       "required": false,
       "default": 15,
@@ -50,11 +60,15 @@
       "type": "number",
       "label": {
         "en": "Days kept in the past",
-        "fr": "Jours conservés dans le passé"
+        "fr": "Jours conservés dans le passé",
+        "de": "Aufbewahrte vergangene Tage",
+        "es": "Días conservados en el pasado"
       },
       "description": {
         "en": "Older events are removed from Gladys.",
-        "fr": "Les événements plus anciens sont retirés de Gladys."
+        "fr": "Les événements plus anciens sont retirés de Gladys.",
+        "de": "Ältere Termine werden aus Gladys entfernt.",
+        "es": "Los eventos más antiguos se eliminan de Gladys."
       },
       "required": false,
       "default": 30,
@@ -66,11 +80,15 @@
       "type": "number",
       "label": {
         "en": "Days synced ahead",
-        "fr": "Jours synchronisés à l'avance"
+        "fr": "Jours synchronisés à l'avance",
+        "de": "Im Voraus synchronisierte Tage",
+        "es": "Días sincronizados por adelantado"
       },
       "description": {
         "en": "Horizon of the calendar view, the reminders and the widgets.",
-        "fr": "Horizon de la vue calendrier, des rappels et des widgets."
+        "fr": "Horizon de la vue calendrier, des rappels et des widgets.",
+        "de": "Zeithorizont der Kalenderansicht, der Erinnerungen und der Widgets.",
+        "es": "Horizonte de la vista de calendario, los recordatorios y los widgets."
       },
       "required": false,
       "default": 90,
@@ -84,25 +102,33 @@
       "type": "section",
       "label": {
         "en": "Connect your Notion workspace",
-        "fr": "Connectez votre espace Notion"
+        "fr": "Connectez votre espace Notion",
+        "de": "Verbinden Sie Ihren Notion-Workspace",
+        "es": "Conecta tu espacio de trabajo de Notion"
       },
       "description": {
         "en": "1. Create an internal integration in Notion and copy its secret. 2. On each database to sync, open ••• → Connections and add that integration. Notion Calendar shows the same databases: those with a date property.",
-        "fr": "1. Créez une intégration interne dans Notion et copiez son secret. 2. Sur chaque base à synchroniser, ouvrez ••• → Connexions et ajoutez cette intégration. Notion Calendar affiche les mêmes bases : celles qui ont une propriété date."
+        "fr": "1. Créez une intégration interne dans Notion et copiez son secret. 2. Sur chaque base à synchroniser, ouvrez ••• → Connexions et ajoutez cette intégration. Notion Calendar affiche les mêmes bases : celles qui ont une propriété date.",
+        "de": "1. Erstellen Sie in Notion eine interne Integration und kopieren Sie ihr Secret. 2. Öffnen Sie in jeder zu synchronisierenden Datenbank ••• → Verbindungen und fügen Sie diese Integration hinzu. Notion Calendar zeigt dieselben Datenbanken an: diejenigen mit einer Datumseigenschaft.",
+        "es": "1. Crea una integración interna en Notion y copia su secreto. 2. En cada base de datos que quieras sincronizar, abre ••• → Conexiones y añade esa integración. Notion Calendar muestra las mismas bases de datos: las que tienen una propiedad de fecha."
       },
       "links": [
         {
           "url": "https://www.notion.so/profile/integrations",
           "label": {
             "en": "My Notion integrations",
-            "fr": "Mes intégrations Notion"
+            "fr": "Mes intégrations Notion",
+            "de": "Meine Notion-Integrationen",
+            "es": "Mis integraciones de Notion"
           }
         },
         {
           "url": "https://developers.notion.com/docs/create-a-notion-integration",
           "label": {
             "en": "Notion guide",
-            "fr": "Guide Notion"
+            "fr": "Guide Notion",
+            "de": "Notion-Anleitung",
+            "es": "Guía de Notion"
           }
         }
       ]
@@ -112,11 +138,15 @@
       "type": "secret",
       "label": {
         "en": "Notion integration secret",
-        "fr": "Secret de l'intégration Notion"
+        "fr": "Secret de l'intégration Notion",
+        "de": "Secret der Notion-Integration",
+        "es": "Secreto de la integración de Notion"
       },
       "placeholder": {
         "en": "ntn_…",
-        "fr": "ntn_…"
+        "fr": "ntn_…",
+        "de": "ntn_…",
+        "es": "ntn_…"
       },
       "required": true
     },
@@ -125,15 +155,21 @@
       "type": "string",
       "label": {
         "en": "Databases (optional)",
-        "fr": "Bases (facultatif)"
+        "fr": "Bases (facultatif)",
+        "de": "Datenbanken (optional)",
+        "es": "Bases de datos (opcional)"
       },
       "description": {
         "en": "Links or ids of the databases to sync, separated by commas. Empty: every database shared with the integration.",
-        "fr": "Liens ou identifiants des bases à synchroniser, séparés par des virgules. Vide : toutes les bases partagées avec l'intégration."
+        "fr": "Liens ou identifiants des bases à synchroniser, séparés par des virgules. Vide : toutes les bases partagées avec l'intégration.",
+        "de": "Links oder IDs der zu synchronisierenden Datenbanken, durch Kommas getrennt. Leer: alle mit der Integration geteilten Datenbanken.",
+        "es": "Enlaces o identificadores de las bases de datos que sincronizar, separados por comas. Vacío: todas las bases compartidas con la integración."
       },
       "placeholder": {
         "en": "https://www.notion.so/…",
-        "fr": "https://www.notion.so/…"
+        "fr": "https://www.notion.so/…",
+        "de": "https://www.notion.so/…",
+        "es": "https://www.notion.so/…"
       },
       "required": false
     },
@@ -142,15 +178,21 @@
       "type": "string",
       "label": {
         "en": "Date property (optional)",
-        "fr": "Propriété date (facultatif)"
+        "fr": "Propriété date (facultatif)",
+        "de": "Datumseigenschaft (optional)",
+        "es": "Propiedad de fecha (opcional)"
       },
       "description": {
         "en": "Name of the date property to use when a database has several. Empty: the first one.",
-        "fr": "Nom de la propriété date à utiliser quand une base en a plusieurs. Vide : la première."
+        "fr": "Nom de la propriété date à utiliser quand une base en a plusieurs. Vide : la première.",
+        "de": "Name der zu verwendenden Datumseigenschaft, wenn eine Datenbank mehrere hat. Leer: die erste.",
+        "es": "Nombre de la propiedad de fecha que usar cuando una base de datos tiene varias. Vacío: la primera."
       },
       "placeholder": {
         "en": "e.g. Date",
-        "fr": "ex. Date"
+        "fr": "ex. Date",
+        "de": "z. B. Datum",
+        "es": "p. ej. Fecha"
       },
       "required": false
     }
@@ -160,7 +202,9 @@
       "key": "test_connection",
       "label": {
         "en": "Test the Notion accounts",
-        "fr": "Tester les comptes Notion"
+        "fr": "Tester les comptes Notion",
+        "de": "Notion-Konten testen",
+        "es": "Probar las cuentas de Notion"
       },
       "timeout_seconds": 60
     },
@@ -168,7 +212,9 @@
       "key": "sync_now",
       "label": {
         "en": "Sync now",
-        "fr": "Synchroniser maintenant"
+        "fr": "Synchroniser maintenant",
+        "de": "Jetzt synchronisieren",
+        "es": "Sincronizar ahora"
       },
       "timeout_seconds": 120
     }
@@ -178,11 +224,15 @@
       "key": "event_created",
       "label": {
         "en": "Notion event added",
-        "fr": "Événement Notion ajouté"
+        "fr": "Événement Notion ajouté",
+        "de": "Notion-Termin hinzugefügt",
+        "es": "Evento de Notion añadido"
       },
       "description": {
         "en": "A dated page appeared in a shared Notion calendar.",
-        "fr": "Une page datée est apparue dans un calendrier Notion partagé."
+        "fr": "Une page datée est apparue dans un calendrier Notion partagé.",
+        "de": "In einem geteilten Notion-Kalender ist eine datierte Seite erschienen.",
+        "es": "Ha aparecido una página con fecha en un calendario de Notion compartido."
       },
       "fields": [
         {
@@ -190,11 +240,15 @@
           "type": "string",
           "label": {
             "en": "Calendar name",
-            "fr": "Nom du calendrier"
+            "fr": "Nom du calendrier",
+            "de": "Kalendername",
+            "es": "Nombre del calendario"
           },
           "description": {
             "en": "Name of the Notion database. Empty: any shared calendar.",
-            "fr": "Nom de la base Notion. Vide : n'importe quel calendrier partagé."
+            "fr": "Nom de la base Notion. Vide : n'importe quel calendrier partagé.",
+            "de": "Name der Notion-Datenbank. Leer: jeder geteilte Kalender.",
+            "es": "Nombre de la base de datos de Notion. Vacío: cualquier calendario compartido."
           }
         }
       ],
@@ -204,7 +258,9 @@
           "type": "string",
           "label": {
             "en": "Calendar",
-            "fr": "Calendrier"
+            "fr": "Calendrier",
+            "de": "Kalender",
+            "es": "Calendario"
           }
         },
         {
@@ -212,7 +268,9 @@
           "type": "string",
           "label": {
             "en": "Event name",
-            "fr": "Nom de l'événement"
+            "fr": "Nom de l'événement",
+            "de": "Name des Termins",
+            "es": "Nombre del evento"
           }
         },
         {
@@ -220,7 +278,9 @@
           "type": "string",
           "label": {
             "en": "Start",
-            "fr": "Début"
+            "fr": "Début",
+            "de": "Beginn",
+            "es": "Inicio"
           }
         },
         {
@@ -228,7 +288,9 @@
           "type": "boolean",
           "label": {
             "en": "All day",
-            "fr": "Toute la journée"
+            "fr": "Toute la journée",
+            "de": "Ganztägig",
+            "es": "Todo el día"
           }
         },
         {
@@ -236,7 +298,9 @@
           "type": "string",
           "label": {
             "en": "Notion link",
-            "fr": "Lien Notion"
+            "fr": "Lien Notion",
+            "de": "Notion-Link",
+            "es": "Enlace de Notion"
           }
         }
       ]
@@ -245,11 +309,15 @@
       "key": "sync_failed",
       "label": {
         "en": "Notion sync failed",
-        "fr": "Échec de synchro Notion"
+        "fr": "Échec de synchro Notion",
+        "de": "Notion-Synchronisierung fehlgeschlagen",
+        "es": "Error de sincronización de Notion"
       },
       "description": {
         "en": "An account stopped syncing (revoked token, unshared database).",
-        "fr": "Un compte ne se synchronise plus (jeton révoqué, base non partagée)."
+        "fr": "Un compte ne se synchronise plus (jeton révoqué, base non partagée).",
+        "de": "Ein Konto synchronisiert nicht mehr (widerrufenes Token, nicht geteilte Datenbank).",
+        "es": "Una cuenta ha dejado de sincronizarse (token revocado, base de datos no compartida)."
       },
       "variables": [
         {
@@ -257,7 +325,9 @@
           "type": "string",
           "label": {
             "en": "User",
-            "fr": "Utilisateur"
+            "fr": "Utilisateur",
+            "de": "Nutzer",
+            "es": "Usuario"
           }
         },
         {
@@ -265,7 +335,9 @@
           "type": "string",
           "label": {
             "en": "Error",
-            "fr": "Erreur"
+            "fr": "Erreur",
+            "de": "Fehler",
+            "es": "Error"
           }
         }
       ]
@@ -276,11 +348,15 @@
       "key": "sync_now",
       "label": {
         "en": "Sync Notion calendars",
-        "fr": "Synchroniser les calendriers Notion"
+        "fr": "Synchroniser les calendriers Notion",
+        "de": "Notion-Kalender synchronisieren",
+        "es": "Sincronizar los calendarios de Notion"
       },
       "description": {
         "en": "Read Notion now instead of waiting for the next sync.",
-        "fr": "Lit Notion maintenant au lieu d'attendre la prochaine synchro."
+        "fr": "Lit Notion maintenant au lieu d'attendre la prochaine synchro.",
+        "de": "Liest Notion sofort, statt auf die nächste Synchronisierung zu warten.",
+        "es": "Lee Notion ahora en lugar de esperar a la próxima sincronización."
       },
       "timeout_seconds": 120,
       "outputs": [
@@ -289,7 +365,9 @@
           "type": "number",
           "label": {
             "en": "Calendars",
-            "fr": "Calendriers"
+            "fr": "Calendriers",
+            "de": "Kalender",
+            "es": "Calendarios"
           }
         },
         {
@@ -297,7 +375,9 @@
           "type": "number",
           "label": {
             "en": "Events",
-            "fr": "Événements"
+            "fr": "Événements",
+            "de": "Termine",
+            "es": "Eventos"
           }
         },
         {
@@ -305,7 +385,9 @@
           "type": "boolean",
           "label": {
             "en": "Every account synced",
-            "fr": "Tous les comptes synchronisés"
+            "fr": "Tous les comptes synchronisés",
+            "de": "Alle Konten synchronisiert",
+            "es": "Todas las cuentas sincronizadas"
           }
         }
       ]
@@ -314,11 +396,15 @@
       "key": "create_event",
       "label": {
         "en": "Add a Notion event",
-        "fr": "Ajouter un événement Notion"
+        "fr": "Ajouter un événement Notion",
+        "de": "Notion-Termin hinzufügen",
+        "es": "Añadir un evento de Notion"
       },
       "description": {
         "en": "Create a page in the database of a shared Notion calendar.",
-        "fr": "Crée une page dans la base d'un calendrier Notion partagé."
+        "fr": "Crée une page dans la base d'un calendrier Notion partagé.",
+        "de": "Erstellt eine Seite in der Datenbank eines geteilten Notion-Kalenders.",
+        "es": "Crea una página en la base de datos de un calendario de Notion compartido."
       },
       "timeout_seconds": 60,
       "fields": [
@@ -327,7 +413,9 @@
           "type": "string",
           "label": {
             "en": "Calendar name",
-            "fr": "Nom du calendrier"
+            "fr": "Nom du calendrier",
+            "de": "Kalendername",
+            "es": "Nombre del calendario"
           },
           "required": true
         },
@@ -336,7 +424,9 @@
           "type": "string",
           "label": {
             "en": "Event name",
-            "fr": "Nom de l'événement"
+            "fr": "Nom de l'événement",
+            "de": "Name des Termins",
+            "es": "Nombre del evento"
           },
           "required": true
         },
@@ -345,15 +435,21 @@
           "type": "string",
           "label": {
             "en": "Start",
-            "fr": "Début"
+            "fr": "Début",
+            "de": "Beginn",
+            "es": "Inicio"
           },
           "description": {
             "en": "A date (2026-10-12) for an all-day event, or a date-time (2026-10-12T09:00:00+02:00).",
-            "fr": "Une date (2026-10-12) pour un événement sur la journée, ou une date-heure (2026-10-12T09:00:00+02:00)."
+            "fr": "Une date (2026-10-12) pour un événement sur la journée, ou une date-heure (2026-10-12T09:00:00+02:00).",
+            "de": "Ein Datum (2026-10-12) für einen ganztägigen Termin oder ein Datum mit Uhrzeit (2026-10-12T09:00:00+02:00).",
+            "es": "Una fecha (2026-10-12) para un evento de todo el día, o una fecha y hora (2026-10-12T09:00:00+02:00)."
           },
           "placeholder": {
             "en": "2026-10-12T09:00:00+02:00",
-            "fr": "2026-10-12T09:00:00+02:00"
+            "fr": "2026-10-12T09:00:00+02:00",
+            "de": "2026-10-12T09:00:00+02:00",
+            "es": "2026-10-12T09:00:00+02:00"
           },
           "required": true
         },
@@ -362,11 +458,15 @@
           "type": "string",
           "label": {
             "en": "End",
-            "fr": "Fin"
+            "fr": "Fin",
+            "de": "Ende",
+            "es": "Fin"
           },
           "placeholder": {
             "en": "2026-10-12T10:00:00+02:00",
-            "fr": "2026-10-12T10:00:00+02:00"
+            "fr": "2026-10-12T10:00:00+02:00",
+            "de": "2026-10-12T10:00:00+02:00",
+            "es": "2026-10-12T10:00:00+02:00"
           }
         },
         {
@@ -374,7 +474,9 @@
           "type": "string",
           "label": {
             "en": "Location",
-            "fr": "Lieu"
+            "fr": "Lieu",
+            "de": "Ort",
+            "es": "Lugar"
           }
         }
       ],
@@ -384,7 +486,9 @@
           "type": "boolean",
           "label": {
             "en": "Event created",
-            "fr": "Événement créé"
+            "fr": "Événement créé",
+            "de": "Termin erstellt",
+            "es": "Evento creado"
           }
         },
         {
@@ -392,7 +496,9 @@
           "type": "string",
           "label": {
             "en": "Notion link",
-            "fr": "Lien Notion"
+            "fr": "Lien Notion",
+            "de": "Notion-Link",
+            "es": "Enlace de Notion"
           }
         }
       ]
@@ -401,11 +507,15 @@
       "key": "get_next_event",
       "label": {
         "en": "Get the next Notion event",
-        "fr": "Lire le prochain événement Notion"
+        "fr": "Lire le prochain événement Notion",
+        "de": "Nächsten Notion-Termin abrufen",
+        "es": "Obtener el próximo evento de Notion"
       },
       "description": {
         "en": "The next event of the shared Notion calendars, for the following actions.",
-        "fr": "Le prochain événement des calendriers Notion partagés, pour les actions suivantes."
+        "fr": "Le prochain événement des calendriers Notion partagés, pour les actions suivantes.",
+        "de": "Der nächste Termin der geteilten Notion-Kalender, für die folgenden Aktionen.",
+        "es": "El próximo evento de los calendarios de Notion compartidos, para las acciones siguientes."
       },
       "timeout_seconds": 15,
       "fields": [
@@ -414,11 +524,15 @@
           "type": "string",
           "label": {
             "en": "Calendar name",
-            "fr": "Nom du calendrier"
+            "fr": "Nom du calendrier",
+            "de": "Kalendername",
+            "es": "Nombre del calendario"
           },
           "description": {
             "en": "Empty: every shared calendar.",
-            "fr": "Vide : tous les calendriers partagés."
+            "fr": "Vide : tous les calendriers partagés.",
+            "de": "Leer: alle geteilten Kalender.",
+            "es": "Vacío: todos los calendarios compartidos."
           }
         }
       ],
@@ -428,7 +542,9 @@
           "type": "boolean",
           "label": {
             "en": "Event found",
-            "fr": "Événement trouvé"
+            "fr": "Événement trouvé",
+            "de": "Termin gefunden",
+            "es": "Evento encontrado"
           }
         },
         {
@@ -436,7 +552,9 @@
           "type": "string",
           "label": {
             "en": "Event name",
-            "fr": "Nom de l'événement"
+            "fr": "Nom de l'événement",
+            "de": "Name des Termins",
+            "es": "Nombre del evento"
           }
         },
         {
@@ -444,7 +562,9 @@
           "type": "string",
           "label": {
             "en": "Start",
-            "fr": "Début"
+            "fr": "Début",
+            "de": "Beginn",
+            "es": "Inicio"
           }
         },
         {
@@ -452,7 +572,9 @@
           "type": "number",
           "label": {
             "en": "Minutes until start",
-            "fr": "Minutes avant le début"
+            "fr": "Minutes avant le début",
+            "de": "Minuten bis zum Beginn",
+            "es": "Minutos hasta el inicio"
           }
         },
         {
@@ -460,7 +582,9 @@
           "type": "string",
           "label": {
             "en": "Calendar",
-            "fr": "Calendrier"
+            "fr": "Calendrier",
+            "de": "Kalender",
+            "es": "Calendario"
           }
         },
         {
@@ -468,7 +592,9 @@
           "type": "string",
           "label": {
             "en": "Notion link",
-            "fr": "Lien Notion"
+            "fr": "Lien Notion",
+            "de": "Notion-Link",
+            "es": "Enlace de Notion"
           }
         }
       ]
@@ -479,11 +605,15 @@
       "key": "upcoming_events",
       "label": {
         "en": "Notion agenda",
-        "fr": "Agenda Notion"
+        "fr": "Agenda Notion",
+        "de": "Notion-Agenda",
+        "es": "Agenda de Notion"
       },
       "description": {
         "en": "The next events of the shared Notion calendars.",
-        "fr": "Les prochains événements des calendriers Notion partagés."
+        "fr": "Les prochains événements des calendriers Notion partagés.",
+        "de": "Die nächsten Termine der geteilten Notion-Kalender.",
+        "es": "Los próximos eventos de los calendarios de Notion compartidos."
       },
       "icon": "calendar",
       "settings": [
@@ -492,11 +622,15 @@
           "type": "string",
           "label": {
             "en": "Calendar name",
-            "fr": "Nom du calendrier"
+            "fr": "Nom du calendrier",
+            "de": "Kalendername",
+            "es": "Nombre del calendario"
           },
           "description": {
             "en": "Empty: every shared calendar.",
-            "fr": "Vide : tous les calendriers partagés."
+            "fr": "Vide : tous les calendriers partagés.",
+            "de": "Leer: alle geteilten Kalender.",
+            "es": "Vacío: todos los calendarios compartidos."
           }
         },
         {
@@ -504,7 +638,9 @@
           "type": "number",
           "label": {
             "en": "Events shown",
-            "fr": "Événements affichés"
+            "fr": "Événements affichés",
+            "de": "Angezeigte Termine",
+            "es": "Eventos mostrados"
           },
           "default": 5,
           "min": 1,
@@ -517,11 +653,15 @@
       "key": "agenda_summary",
       "label": {
         "en": "Notion summary",
-        "fr": "Résumé Notion"
+        "fr": "Résumé Notion",
+        "de": "Notion-Übersicht",
+        "es": "Resumen de Notion"
       },
       "description": {
         "en": "Upcoming event counts, next event and sync health.",
-        "fr": "Nombre d'événements à venir, prochain événement et état de la synchro."
+        "fr": "Nombre d'événements à venir, prochain événement et état de la synchro.",
+        "de": "Anzahl kommender Termine, nächster Termin und Synchronisierungsstatus.",
+        "es": "Número de eventos próximos, próximo evento y estado de la sincronización."
       },
       "icon": "clock",
       "action_timeout_seconds": 120

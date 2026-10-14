@@ -46,7 +46,7 @@ src/scenes.js                     scene action handlers (manifest `scene_actions
 src/widgets.js                    dashboard widget handlers (manifest `widgets`)
 src/config.js                     DEFAULT_CONFIG (mirrors the manifest defaults), account normalization
 gladys-assistant-integration.json manifest: type calendar, config_schema, account_schema, capabilities
-docs/en.md, docs/fr.md            user documentation, re-hosted by Gladys (mandatory)
+docs/{en,fr,de,es}.md             user documentation, re-hosted by Gladys (mandatory)
 test/                             node --test, against the SDK's fake Gladys and test/helpers/fakeNotion.js
 .github/scripts/changelog.mjs     rolls CHANGELOG.md at release, tested in test/changelog.test.js
 ```
@@ -76,15 +76,17 @@ test/                             node --test, against the SDK's fake Gladys and
 - **Changelog.** Every user-visible change adds a line under `## [Unreleased]`
   in `CHANGELOG.md` (`### Added`, `Changed`, `Fixed`, `Removed`, `Security`).
   Never write a version heading: the Release workflow moves the section.
-- **Manifest.** Texts are multi-language objects `{ "en": ..., "fr": ... }`:
+- **Manifest.** Texts are multi-language objects
+  `{ "en": ..., "fr": ..., "de": ..., "es": ... }`:
   `label`, `description` and `placeholder` alike. The catalog `description`
   holds 10 to 100 characters per language. `type: "calendar"` and
   `account_schema` need `gladys_version >= 5.2.0`. The manifest is excluded
   from Prettier (the Release workflow rewrites it with `jq`).
   `test/manifest.test.js` ties the manifest to the code (defaults, action,
   scene and widget handlers, triggers fired): change both sides together.
-- **User-facing text** is bilingual (English and French): action messages,
-  widget texts, manifest texts, and `docs/en.md` / `docs/fr.md`, kept in sync.
+- **User-facing text** exists in English, French, German and Spanish
+  (`en`, `fr`, `de`, `es`): action messages, widget texts, manifest texts, and
+  `docs/en.md` / `fr.md` / `de.md` / `es.md`, kept in sync.
 - **Style.** Prettier formats, ESLint catches mistakes. Comments explain why,
   in English. Tests never touch the network: use `FakeNotion` or an injected
   `fetch`.

@@ -115,6 +115,13 @@ test('a "Location" text property becomes the event location', () => {
   );
 });
 
+test('the German and Spanish location property names are recognized too', () => {
+  for (const name of ['Ort', 'Standort', 'Lugar', 'Ubicación', 'Dirección']) {
+    const source = dataSource('ds-4', 'Trips', { extra: { [name]: { type: 'rich_text' } } });
+    assert.equal(describeDataSource(source).locationProperty, name);
+  }
+});
+
 test('overlapsWindow follows the pruning rule of the core', () => {
   const from = Date.parse('2026-10-01T00:00:00Z');
   const to = Date.parse('2026-11-01T00:00:00Z');

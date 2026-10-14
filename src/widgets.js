@@ -34,7 +34,7 @@ const DAY_MS = 24 * HOUR_MS;
 
 const syncButton = {
   type: 'button',
-  label: { en: 'Sync now', fr: 'Synchroniser' },
+  label: { en: 'Sync now', fr: 'Synchroniser', de: 'Synchronisieren', es: 'Sincronizar' },
   icon: 'refresh-cw',
   style: 'secondary',
   action: { key: WIDGET_ACTIONS.SYNC },
@@ -55,7 +55,7 @@ export function formatDelay(ms) {
     return `${hours} h ${String(minutes % 60).padStart(2, '0')}`;
   }
   const days = Math.round(minutes / (24 * 60));
-  return { en: `${days} d`, fr: `${days} j` };
+  return { en: `${days} d`, fr: `${days} j`, de: `${days} T.`, es: `${days} d` };
 }
 
 function maxEvents(settings) {
@@ -71,7 +71,12 @@ async function runSync(sync) {
     // Throwing acks the action as failed: the message reaches the user.
     throw new Error(`${failed} account(s) could not sync, check the integration logs`);
   }
-  return { en: `${events} events synced`, fr: `${events} événements synchronisés` };
+  return {
+    en: `${events} events synced`,
+    fr: `${events} événements synchronisés`,
+    de: `${events} Termine synchronisiert`,
+    es: `${events} eventos sincronizados`,
+  };
 }
 
 async function handleAction(_gladys, { widgetKey, actionKey, sync }) {
@@ -98,6 +103,8 @@ export const WIDGETS = {
           text: {
             en: 'No upcoming event. Only the calendars shared with the household are shown here.',
             fr: 'Aucun événement à venir. Seuls les calendriers partagés avec la maison sont affichés ici.',
+            de: 'Kein anstehender Termin. Hier werden nur die mit dem Haushalt geteilten Kalender angezeigt.',
+            es: 'Ningún evento próximo. Aquí solo se muestran los calendarios compartidos con el hogar.',
           },
         });
       } else {
@@ -114,13 +121,27 @@ export const WIDGETS = {
               date: event.start,
             };
             if (event.startMs <= now) {
-              item.badge = { text: { en: 'Now', fr: 'En cours' }, color: WIDGET_COLORS.SUCCESS };
+              item.badge = {
+                text: { en: 'Now', fr: 'En cours', de: 'Läuft', es: 'En curso' },
+                color: WIDGET_COLORS.SUCCESS,
+              };
             } else if (event.fullDay) {
-              item.badge = { text: { en: 'All day', fr: 'Journée' }, color: WIDGET_COLORS.INFO };
+              item.badge = {
+                text: { en: 'All day', fr: 'Journée', de: 'Ganztägig', es: 'Todo el día' },
+                color: WIDGET_COLORS.INFO,
+              };
             }
             if (event.url && event.url.startsWith('https://')) {
               item.links = [
-                { url: event.url, label: { en: 'Open in Notion', fr: 'Ouvrir dans Notion' } },
+                {
+                  url: event.url,
+                  label: {
+                    en: 'Open in Notion',
+                    fr: 'Ouvrir dans Notion',
+                    de: 'In Notion öffnen',
+                    es: 'Abrir en Notion',
+                  },
+                },
               ];
             }
             return item;
@@ -151,19 +172,34 @@ export const WIDGETS = {
         components: [
           {
             type: 'value',
-            label: { en: 'Next 24 hours', fr: 'Prochaines 24 h' },
+            label: {
+              en: 'Next 24 hours',
+              fr: 'Prochaines 24 h',
+              de: 'Nächste 24 h',
+              es: 'Próximas 24 h',
+            },
             icon: 'calendar',
             value: startingWithin(DAY_MS),
           },
           {
             type: 'value',
-            label: { en: 'Next 7 days', fr: '7 prochains jours' },
+            label: {
+              en: 'Next 7 days',
+              fr: '7 prochains jours',
+              de: 'Nächste 7 Tage',
+              es: 'Próximos 7 días',
+            },
             icon: 'calendar',
             value: startingWithin(7 * DAY_MS),
           },
           {
             type: 'value',
-            label: { en: 'Next event in', fr: 'Prochain dans' },
+            label: {
+              en: 'Next event in',
+              fr: 'Prochain dans',
+              de: 'Nächster in',
+              es: 'Próximo en',
+            },
             icon: 'clock',
             value: next ? formatDelay(next.startMs - now) : '-',
           },
@@ -171,29 +207,48 @@ export const WIDGETS = {
             type: 'status',
             items: [
               {
-                label: { en: 'Next event', fr: 'Prochain événement' },
+                label: {
+                  en: 'Next event',
+                  fr: 'Prochain événement',
+                  de: 'Nächster Termin',
+                  es: 'Próximo evento',
+                },
                 icon: 'bookmark',
-                value: next ? truncate(next.name, 40) : { en: 'None', fr: 'Aucun' },
+                value: next
+                  ? truncate(next.name, 40)
+                  : { en: 'None', fr: 'Aucun', de: 'Keiner', es: 'Ninguno' },
                 color: next ? WIDGET_COLORS.PRIMARY : WIDGET_COLORS.NEUTRAL,
               },
               {
-                label: { en: 'Notion accounts', fr: 'Comptes Notion' },
+                label: {
+                  en: 'Notion accounts',
+                  fr: 'Comptes Notion',
+                  de: 'Notion-Konten',
+                  es: 'Cuentas de Notion',
+                },
                 icon: 'users',
                 value:
                   failed > 0
                     ? {
                         en: `${failed} of ${users} failing`,
                         fr: `${failed} sur ${users} en erreur`,
+                        de: `${failed} von ${users} fehlerhaft`,
+                        es: `${failed} de ${users} con error`,
                       }
                     : users,
                 color: failed > 0 ? WIDGET_COLORS.DANGER : WIDGET_COLORS.SUCCESS,
               },
               {
-                label: { en: 'Last sync', fr: 'Dernière synchro' },
+                label: {
+                  en: 'Last sync',
+                  fr: 'Dernière synchro',
+                  de: 'Letzte Synchronisierung',
+                  es: 'Última sincronización',
+                },
                 icon: 'refresh-cw',
                 value: lastSync
                   ? formatAgo(now - Date.parse(lastSync))
-                  : { en: 'Never', fr: 'Jamais' },
+                  : { en: 'Never', fr: 'Jamais', de: 'Nie', es: 'Nunca' },
                 color: lastSync ? WIDGET_COLORS.NEUTRAL : WIDGET_COLORS.WARNING,
               },
             ],
@@ -209,17 +264,27 @@ export const WIDGETS = {
   },
 };
 
-/** "5 min ago" / "il y a 5 min", at most 40 characters, as a status row wants. */
+/** "5 min ago" / "il y a 5 min" / "vor 5 Min." / "hace 5 min", at most 40 characters, as a status row wants. */
 export function formatAgo(ms) {
   const minutes = Math.max(0, Math.round(ms / 60000));
   if (minutes < 1) {
-    return { en: 'just now', fr: "à l'instant" };
+    return { en: 'just now', fr: "à l'instant", de: 'gerade eben', es: 'ahora mismo' };
   }
   if (minutes < 60) {
-    return { en: `${minutes} min ago`, fr: `il y a ${minutes} min` };
+    return {
+      en: `${minutes} min ago`,
+      fr: `il y a ${minutes} min`,
+      de: `vor ${minutes} Min.`,
+      es: `hace ${minutes} min`,
+    };
   }
   const hours = Math.round(minutes / 60);
-  return { en: `${hours} h ago`, fr: `il y a ${hours} h` };
+  return {
+    en: `${hours} h ago`,
+    fr: `il y a ${hours} h`,
+    de: `vor ${hours} Std.`,
+    es: `hace ${hours} h`,
+  };
 }
 
 /**

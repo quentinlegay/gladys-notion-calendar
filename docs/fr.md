@@ -21,7 +21,7 @@ puis :
   **calendrier** Gladys, du nom de la base ;
 - chaque page datée devient un **événement** : son titre, sa date (sur la
   journée ou avec horaire), son lien Notion et, si la base a une propriété
-  texte `Lieu` / `Location`, son lieu.
+  texte `Lieu` / `Location` / `Ort` / `Lugar`, son lieu.
 
 La synchronisation va de Notion vers Gladys, toutes les 15 minutes par défaut.
 Une page supprimée ou dont la date est vidée disparaît de Gladys à la
